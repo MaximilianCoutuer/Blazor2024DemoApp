@@ -1,0 +1,47 @@
+﻿<p>Lifecycle events: @LifecycleEvents</p>
+<button @onclick=ChangeSomeRandomStateVariable>Click me to change model state!</button>
+
+@code {
+    private string LifecycleEvents { get; set; }
+    private int SomeRandomStateVariable { get; set; } = 0;
+
+    private void ChangeSomeRandomStateVariable() {
+        SomeRandomStateVariable += 1;
+    }
+
+    protected override void OnInitialized()
+    {
+        LifecycleEvents += "OnInitialized; ";
+        base.OnInitialized();
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        LifecycleEvents += "OnInitializedAsync; ";
+        return base.OnInitializedAsync();
+    }
+
+    protected override void OnParametersSet()
+    {
+        LifecycleEvents += "OnParametersSet; ";
+        base.OnParametersSet();
+    }
+
+    protected override Task OnParametersSetAsync()
+    {
+        LifecycleEvents += "OnParametersSetAsync; ";
+        return base.OnParametersSetAsync();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        LifecycleEvents += "OnAfterRender; ";
+        base.OnAfterRender(firstRender);
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        LifecycleEvents += "OnAfterRenderAsync; ";
+        return base.OnAfterRenderAsync(firstRender);
+    }
+    }
