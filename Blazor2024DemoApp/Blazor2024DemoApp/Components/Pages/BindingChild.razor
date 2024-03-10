@@ -1,0 +1,17 @@
+﻿<h3>BindingChild</h3>
+
+<button @onclick="RollDie">Roll Die</button>
+
+@code {
+    [Parameter]
+    public int DieRoll { get; set; }
+
+    [Parameter]
+    public EventCallback<int> DieRollChanged { get; set; }
+
+    private async void RollDie()
+    {
+        DieRoll = new Random().Next(1, 7);
+        await DieRollChanged.InvokeAsync(DieRoll);
+    }
+}

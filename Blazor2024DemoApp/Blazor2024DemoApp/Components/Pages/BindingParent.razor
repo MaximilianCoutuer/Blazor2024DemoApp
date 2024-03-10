@@ -1,0 +1,22 @@
+﻿<h3>BindingParent</h3>
+
+<p>Die roll received from child: @DieRoll</p>
+<BindingChild @bind-DieRoll=DieRoll />
+<p>Parent value is: @ParentValue</p>
+<CascadingValue Name="SomeName" Value="@ParentValue">
+    <CascadingValue Name="ThisName" Value="this">
+        <CascadingChild />
+    </CascadingValue>
+</CascadingValue>
+<button @onclick="IncrementParentValue">Increment ParentValue</button>
+
+
+@code {
+    public int DieRoll { get; set; }
+    public int ParentValue { get; set; } = 1337;
+
+    public void IncrementParentValue() {
+        ParentValue++;
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,15 @@
+﻿<h3>CascadingGrandchild</h3>
+<p>I'm a cascading grandchild! The value I received from the parent is: @SomeName</p>
+<button @onclick="IncrementSomeName">Increment SomeName</button>
+<button @onclick="IncrementBindingParent">Increment BindingParent</button>
+
+@code {
+    [CascadingParameter(Name = "SomeName")]
+    public int SomeName { get; set; }
+    [CascadingParameter(Name = "ThisName")]
+    public BindingParent BindingParent { get; set; }
+
+    void IncrementSomeName() => SomeName++;
+
+    void IncrementBindingParent() => BindingParent.IncrementParentValue();
+}

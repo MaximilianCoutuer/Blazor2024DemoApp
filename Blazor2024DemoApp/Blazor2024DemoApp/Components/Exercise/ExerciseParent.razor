@@ -1,0 +1,14 @@
+﻿<h3>ExerciseParent</h3>
+<CascadingValue Name="CascadingPerson" Value="Person">
+    <ExerciseChild Person="Person" />
+</CascadingValue>
+
+@code {
+    private Person Person = new Person()
+    {
+        Name = "Coutuer",
+        FirstName = "Maximilian",
+        Age = 40,
+        IsInetumEmployee = true
+    };
+}

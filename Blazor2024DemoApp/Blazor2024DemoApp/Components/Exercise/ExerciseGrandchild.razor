@@ -1,0 +1,8 @@
+﻿<h3>ExerciseGrandchild</h3>
+<p>Person is: @Person</p>
+<p>Inetum status: @(Person.IsInetumEmployee ? "😊" : "☹️")</p>
+
+@code {
+    [CascadingParameter(Name = "CascadingPerson")]
+    public Person Person { get; set; } = new Person() { };
+}
