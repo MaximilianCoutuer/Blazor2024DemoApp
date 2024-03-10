@@ -1,0 +1,19 @@
+﻿<h3>ExerciseParent</h3>
+<p>Counter value on parent page: @Counter</p>
+<CascadingValue Name="ExerciseParent" Value="this">
+    <CascadingValue Name="IncrementCounterAsCascadingValue" Value="IncrementCounter">
+        <p><ExerciseChild /></p>
+        <p><ExerciseChild /></p>
+        <p><ExerciseChild /></p>
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    public int Counter { get; set; }
+
+    public void IncrementCounter(int i)
+    {
+        Counter += i;
+        StateHasChanged();
+    }
+}

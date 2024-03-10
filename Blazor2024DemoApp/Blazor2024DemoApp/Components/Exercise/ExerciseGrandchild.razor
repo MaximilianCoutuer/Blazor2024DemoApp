@@ -1,0 +1,21 @@
+﻿<h3>ExerciseGrandchild</h3>
+<p><button @onclick="(args) => IncrementCounterByCallingParentFunction(args, 10)">Increment by 10 by calling a parent function</button></p>
+<p><button @onclick="(args) => IncrementCounterCallback(args, 10)">Increment by 10 but with callback</button></p>
+
+@code {
+    [CascadingParameter(Name = "ExerciseParent")]
+    public ExerciseParent ExerciseParent { get; set; } = new ExerciseParent();
+
+    [CascadingParameter(Name = "IncrementCounterAsCascadingValue")]
+    public EventCallback<int> IncrementCounterAsCascadingValue { get; set; }
+
+    private void IncrementCounterByCallingParentFunction(MouseEventArgs args, int i)
+    {
+        ExerciseParent.IncrementCounter(i);
+    }
+
+    async private void IncrementCounterCallback(MouseEventArgs args, int i)
+    {
+        await IncrementCounterAsCascadingValue.InvokeAsync(i);
+    }
+}
