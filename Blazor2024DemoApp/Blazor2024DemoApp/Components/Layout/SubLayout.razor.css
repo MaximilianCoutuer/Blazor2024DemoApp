@@ -1,0 +1,4 @@
+﻿header, footer, h1, h2, h3, p, ::deep header, ::deep footer, ::deep h1, ::deep h2, ::deep h3, ::deep p {
+    color: #f00;
+    font-family: 'Comic Sans MS';
+}

@@ -1,0 +1,7 @@
+﻿h1 {
+    font-family: 'Comic Sans MS';
+}
+
+h1, ::deep h1 {
+    color: #0ff;
+}
