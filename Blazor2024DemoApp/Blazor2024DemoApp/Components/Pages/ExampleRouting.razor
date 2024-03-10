@@ -1,0 +1,15 @@
+﻿@page "/example-routing/{id:int?}"
+
+<h3>ExampleRouting</h3>
+<p>Id = @id</p>
+
+@code {
+    [Parameter]
+    public int? id { get; set; }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+        id = id ?? 1337;
+    }
+}

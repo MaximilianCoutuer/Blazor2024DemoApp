@@ -1,0 +1,17 @@
+﻿@page "/exercise-page"
+<h3>ExercisePage</h3>
+
+<p>X = @X</p>
+<p>Y = @Y</p>
+<p>
+    <button @onclick="() => X++">Increment X</button>
+    <button @onclick="() => Y++">Increment Y</button>
+</p>
+
+<p>Inline results: <ExercisePageChild X="@X" Y="@Y" /></p>
+<p><a href="/exercise-page-results/@X/@Y">Click me!</a></p>
+
+@code {
+    private int X { get; set; }
+    private int Y { get; set; }
+}

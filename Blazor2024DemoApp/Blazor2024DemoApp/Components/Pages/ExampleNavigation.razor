@@ -1,0 +1,24 @@
+﻿@page "/example-navigation"
+@implements IDisposable
+@inject NavigationManager NavigationManager
+<h3>ExampleNavigation</h3>
+
+<p>Navigation method to this page: @(IsNavigationIntercepted ? "Manual" : "Programmatic")</p>
+
+@code {
+    private bool IsNavigationIntercepted { get; set; }
+
+    void ProcessLocationChanged(object sender, LocationChangedEventArgs arguments) {
+        IsNavigationIntercepted = arguments.IsNavigationIntercepted;
+    }
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += ProcessLocationChanged;
+        base.OnInitialized();
+    }
+
+    void IDisposable.Dispose() {
+        NavigationManager.LocationChanged -= ProcessLocationChanged;
+    }
+}

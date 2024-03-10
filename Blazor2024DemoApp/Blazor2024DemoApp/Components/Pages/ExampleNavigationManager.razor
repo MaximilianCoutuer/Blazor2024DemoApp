@@ -1,0 +1,18 @@
+﻿@rendermode InteractiveServer
+
+@page "/example-navigation-manager"
+<h3>ExampleNavigationManager</h3>
+@inject NavigationManager NavigationManager
+
+<p>Click the button to navigate to the app root.</p>
+
+<button @onclick=ForceNavigate>Click me!</button>
+<a href="/example-navigation">Click me!</a>
+
+@code {
+    private void ForceNavigate()
+    {
+        NavigationManager.NavigateTo("/example-navigation");
+    }
+}
+
