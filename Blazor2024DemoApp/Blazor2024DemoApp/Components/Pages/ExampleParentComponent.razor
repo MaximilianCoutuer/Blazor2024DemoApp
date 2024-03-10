@@ -1,0 +1,9 @@
+﻿<h3>ExampleParentComponent</h3>
+<p>Here is a child component, which I will pass some data into:</p>
+<ExampleChildComponent Id="123" />
+<ExampleChildComponent Id="@MyVariable" />
+
+@code {
+    private int MyVariable = 456;
+}
+

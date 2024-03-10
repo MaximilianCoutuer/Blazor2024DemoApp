@@ -1,0 +1,14 @@
+﻿<h3>ExampleExpressions</h3>
+<input value=@Example />
+<input value=@GetExample() />
+<input value=@(Example * 3) />
+<input value=@($"The value is {GetExample() * 2}") />
+
+@code {
+    private int Example = 1;
+
+    private int GetExample()
+    {
+        return 2;
+    }
+}

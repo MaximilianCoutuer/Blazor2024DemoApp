@@ -1,0 +1,12 @@
+﻿<h3>ExampleRazorComponent</h3>
+<p>The answer to life, the universe and everything is: @TheAnswer</p>
+<button @onclick=CalculateAnswer>Recalculate!</button>
+
+@code {
+    private int TheAnswer = 42;
+
+    void CalculateAnswer() {
+        var random = new Random();
+        TheAnswer = random.Next(100);
+    }
+}

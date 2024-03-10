@@ -1,0 +1,13 @@
+﻿@using Blazor2024DemoApp.Models
+<h3>ExampleComplexParameters</h3>
+<p>Here is a child component, which I will pass somedata into:</p>
+<ExampleComplexChild Person="Person" />
+
+@code {
+    private Person Person = new() {
+        Name = "Maximilian",
+        LastName = "Coutuer",
+        BirthDate = new DateTime(1983, 09, 27)
+    };
+}
+
