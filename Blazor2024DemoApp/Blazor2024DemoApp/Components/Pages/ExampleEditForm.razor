@@ -1,0 +1,28 @@
+﻿<h3>ExampleEditForm</h3>
+<EditForm Model=@User OnValidSubmit=@ValidSubmit OnInvalidSubmit=@InvalidSubmit>
+    <InputText @bind-Value=User.Name />
+    <InputNumber @bind-Value=User.Age />
+    <InputDate @bind-Value=User.Birthday
+        ParsingErrorMessage="Must be a date" />
+    <InputSelect @bind-Value=User.Gender>
+        <option value="Male">M</option>
+        <option value="Female">F</option>
+        <option value="Other">O</option>
+    </InputSelect>
+    <DataAnnotationsValidator />
+    <ValidationMessage For=@(() => User.Name) />
+    <ValidationSummary />
+    <input type="submit" value="Save" />
+</EditForm>
+
+@code {
+    private Person User = new Person();
+
+    void ValidSubmit(EditContext editContext)
+    {
+    }
+
+    void InvalidSubmit(EditContext editContext)
+    {
+    }
+}
