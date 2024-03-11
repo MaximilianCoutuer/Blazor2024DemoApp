@@ -1,0 +1,16 @@
+﻿<h3>ExerciseAdvancedComponents</h3>
+<p>Count = @Count</p>
+@for(int i = 0; i < 8; i++)
+{
+    <ExerciseChild Parent="this" />
+})
+
+@code {
+    private int Count { get; set; } = 2;
+
+    public void IncrementCount()
+    {
+        Count *= 2;
+        StateHasChanged();
+    }
+}
