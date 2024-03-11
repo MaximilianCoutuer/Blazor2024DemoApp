@@ -1,0 +1,29 @@
+﻿@inject IJSRuntime JSRuntime
+<script>
+    function doAlert(thisRef, text) {
+        window.alert(text);
+        thisRef.invokeMethodAsync('UpdateHasClicked', true)
+    }
+</script>
+
+<h3>JSInterop</h3>
+
+<p><button @onclick=RunSomeJs>Run some JS!</button></p>
+<p>Click status: @HasClicked</p>
+
+@code {
+    private bool HasClicked { get; set; }
+
+    private async Task RunSomeJs()
+    {
+        var thisRef = DotNetObjectReference.Create(this);
+        await JSRuntime.InvokeVoidAsync("doAlert", thisRef, "Some JS!");
+    }
+
+    [JSInvokable]
+    public void UpdateHasClicked(bool status)
+    {
+        HasClicked = status;
+        StateHasChanged(); // !!
+    }
+}

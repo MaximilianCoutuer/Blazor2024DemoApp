@@ -1,0 +1,42 @@
+﻿@inject IJSRuntime JSRuntime
+
+<script>
+    var dotNetRef;
+
+    function startTicking(thisRef) {
+        dotNetRef = thisRef;
+        setInterval(() => {
+            tickCookieCount();
+        }, 500);
+    }
+
+    function tickCookieCount() {
+        dotNetRef.invokeMethodAsync('IncrementCookieCount');
+    }
+</script>
+
+<h3>ExerciseCookieClicker</h3>
+<p>Click the button to increase the cookie count!</p>
+<p><button @onclick="IncrementCookieCount">Click me!</button></p>
+<p>Cookie count: @CookieCount</p>
+
+@code {
+    private int CookieCount { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+            var thisRef = DotNetObjectReference.Create(this);
+            JSRuntime.InvokeVoidAsync("startTicking", thisRef);
+        }
+    }
+
+    [JSInvokable("IncrementCookieCount")]
+    public void IncrementCookieCount()
+    {
+        CookieCount++;
+        StateHasChanged();
+    }
+}
